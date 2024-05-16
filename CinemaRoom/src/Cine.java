@@ -7,6 +7,11 @@ public class Cine {
     private int ticket;
     private int ingresoActual;
 
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     public Cine(int fila, int columna) {
         this.fila = fila;
         this.columna = columna;
@@ -31,7 +36,13 @@ public class Cine {
         for (Character[] asientos : sala) {
             System.out.print("Fila ");
             for (int j = 0; j < sala[0].length; j++) {
-                System.out.print(asientos[j] + " ");
+                if (asientos[j] == 'D') {
+                    System.out.print(ANSI_GREEN + asientos[j] + " " + ANSI_RESET);
+                } else if (asientos[j] == 'O'){
+                    System.out.print(ANSI_RED + asientos[j] + " " + ANSI_RESET);
+                } else {
+                    System.out.print(ANSI_BLACK + asientos[j] + " " + ANSI_RESET);
+                }
             }
             System.out.println("\n");
         }
